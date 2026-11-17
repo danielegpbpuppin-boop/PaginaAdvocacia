@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PFB Advocacia em Piracicaba/SP. Atuação consultiva e contenciosa nas áreas Civil, Tributária, Consumidor, Saúde, Seguros e Contratos.">
+    <title>PFB Advocacia | Assessoria Jurídica em Piracicaba - SP</title>
+
+    <!-- Fontes Google Fonts: Playfair Display (Clássica/Respeito) e Source Sans 3 (Acolhedora/Legível) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           VARIÁVEIS DE CORES E TIPOGRAFIA
+           Paleta pensada para alto contraste (WCAG AA/AAA)
+           ========================================= */
+        :root {
+            --cor-primaria: #13293D;      /* Azul Marinho Profundo (Seriedade e Confiança) */
+            --cor-secundaria: #1B3B5A;    /* Azul Institucional */
+            --cor-destaque: #B8860B;      /* Dourado Sóbrio (Tradição) */
+            --cor-destaque-claro: #D4AF37;/* Dourado para fundos escuros */
+            --cor-fundo: #FAF9F6;         /* Off-white acolhedor (reduz fadiga visual) */
+            --cor-branco: #FFFFFF;
+            --cor-texto: #222222;         /* Cinza quase preto para leitura confortável */
+            --cor-texto-suave: #4A5568;
+            --cor-borda: #E2E8F0;
+            
+            --fonte-titulo: 'Playfair Display', Georgia, serif;
+            --fonte-corpo: 'Source Sans 3', Arial, sans-serif;
+            --transicao: all 0.3s ease;
+        }
+
+        /* =========================================
+           RESET E ACESSIBILIDADE GLOBAL
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px; /* Base acessível */
+        }
+
+        body {
+            font-family: var(--fonte-corpo);
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        /* Destaque claro ao navegar pelo teclado (Tab) */
+        :focus-visible {
+            outline: 3px solid var(--cor-destaque);
+            outline-offset: 3px;
+        }
+
+        /* Link de acessibilidade para pular direto ao conteúdo */
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 1rem;
+            background: var(--cor-primaria);
+            color: var(--cor-branco);
+            padding: 0.75rem 1.25rem;
+            z-index: 9999;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: top 0.2s;
+        }
+
+        .skip-link:focus {
+            top: 1rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* =========================================
+           CABEÇALHO E NAVEGAÇÃO HORIZONTAL
+           ========================================= */
+        header {
+            background-color: var(--cor-branco);
+            border-bottom: 1px solid var(--cor-borda);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 85px;
+            gap: 1rem;
+        }
+
+        /* Logo PFB */
+        .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            text-decoration: none;
+            color: var(--cor-primaria);
+        }
+
+        .logo-texto {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-sigla {
+            font-family: var(--fonte-titulo);
+            font-size: 1.65rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            line-height: 1.1;
+            color: var(--cor-primaria);
+        }
+
+        .logo-subtitulo {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--cor-texto-suave);
+            font-weight: 600;
+        }
+
+        /* Menu Horizontal */
+        .nav-principal ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .nav-principal a {
+            display: block;
+            padding: 0.6rem 0.75rem;
+            text-decoration: none;
+            color: var(--cor-primaria);
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 4px;
+            transition: var(--transicao);
+            white-space: nowrap;
+        }
+
+        .nav-principal a:hover,
+        .nav-principal a[aria-current="page"] {
+            background-color: rgba(19, 41, 61, 0.06);
+            color: var(--cor-destaque);
+        }
+
+        /* Botão de Contato no Menu */
+        .nav-principal a.btn-contato-nav {
+            background-color: var(--cor-primaria);
+            color: var(--cor-branco);
+            margin-left: 0.5rem;
+            padding: 0.6rem 1.1rem;
+        }
+
+        .nav-principal a.btn-contato-nav:hover {
+            background-color: var(--cor-secundaria);
+            color: var(--cor-destaque-claro);
+        }
+
+        /* Botão Menu Hambúrguer (Mobile) */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: 2px solid var(--cor-primaria);
+            border-radius: 6px;
+            padding: 0.5rem 0.75rem;
+            color: var(--cor-primaria);
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* =========================================
+           BANNER PRINCIPAL (PIRACICABA À NOITE)
+           ========================================= */
+        .hero {
+            position: relative;
+            min-height: 540px;
+            display: flex;
+            align-items: center;
+            color: var(--cor-branco);
+            /* Imagem noturna urbana/rio representando Piracicaba à noite + camada escura para garantir contraste de leitura */
+            background-image: 
+                linear-gradient(to right, rgba(19, 41, 61, 0.92) 0%, rgba(19, 41, 61, 0.78) 60%, rgba(19, 41, 61, 0.65) 100%),
+                url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 4rem 0;
+        }
+
+        .hero-conteudo {
+            max-width: 780px;
+        }
+
+        .hero-local {
+            display: inline-block;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--cor-destaque-claro);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--cor-destaque-claro);
+            padding-bottom: 0.25rem;
+        }
+
+        .hero h1 {
+            font-family: var(--fonte-titulo);
+            font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+            line-height: 1.25;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* Frase Institucional Obrigatória */
+        .frase-institucional {
+            font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+            line-height: 1.7;
+            color: #F1F5F9;
+            background-color: rgba(255, 255, 255, 0.07);
+            border-left: 4px solid var(--cor-destaque-claro);
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 2rem;
+        }
+
+        .hero-acoes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .btn-primario, .btn-secundario {
+            display: inline-block;
+            padding: 0.9rem 1.75rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: var(--transicao);
+            text-align: center;
+        }
+
+        .btn-primario {
+            background-color: var(--cor-destaque-claro);
+            color: var(--cor-primaria);
+        }
+
+        .btn-primario:hover {
+            background-color: #e5c14b;
+            transform: translateY(-2px);
+        }
+
+        .btn-secundario {
+            border: 2px solid var(--cor-branco);
+            color: var(--cor-branco);
+        }
+
+        .btn-secundario:hover {
+            background-color: var(--cor-branco);
+            color: var(--cor-primaria);
+        }
+
+        /* =========================================
+           SEÇÃO: ÁREAS DE ATUAÇÃO (CARDS DE ACESSO)
+           ========================================= */
+        .secao {
+            padding: 4.5rem 0;
+        }
+
+        .secao-cabecalho {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem auto;
+        }
+
+        .secao-cabecalho h2 {
+            font-family: var(--fonte-titulo);
+            font-size: 2.15rem;
+            color: var(--cor-primaria);
+            margin-bottom: 0.75rem;
+        }
+
+        .divisor-dourado {
+            width: 60px;
+            height: 3px;
+            background-color: var(--cor-destaque);
+            margin: 0 auto 1rem auto;
+        }
+
+        .secao-cabecalho p {
+            color: var(--cor-texto-suave);
+            font-size: 1.1rem;
+        }
+
+        .grid-areas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 1.75rem;
+        }
+
+        .card-area {
+            background-color: var(--cor-branco);
+            border: 1px solid var(--cor-borda);
+            border-top: 4px solid var(--cor-primaria);
+            border-radius: 8px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            transition: var(--transicao);
+        }
+
+        .card-area:hover {
+            transform: translateY(-4px);
+            border-top-color: var(--cor-destaque);
+            box-shadow: 0 10px 25px rgba(19, 41, 61, 0.08);
+        }
+
+        .card-area h3 {
+            font-family: var(--fonte-titulo);
+            font-size: 1.4rem;
+            color: var(--cor-primaria);
+            margin-bottom: 0.75rem;
+        }
+
+        .card-area p {
+            color: var(--cor-texto-suave);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .link-saiba-mais {
+            color: var(--cor-primaria);
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            align-self: flex-start;
+        }
+
+        .link-saiba-mais:hover {
+            color: var(--cor-destaque);
+            text-decoration: underline;
+        }
+
+        /* =========================================
+           SEÇÃO: ACOLHIMENTO E LOCALIZAÇÃO
+           ========================================= */
+        .secao-institucional {
+            background-color: var(--cor-branco);
+            border-top: 1px solid var(--cor-borda);
+            border-bottom: 1px solid var(--cor-borda);
+        }
+
+        .grid-institucional {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .bloco-texto h2 {
+            font-family: var(--fonte-titulo);
+            font-size: 2rem;
+            color: var(--cor-primaria);
+            margin-bottom: 1rem;
+        }
+
+        .bloco-texto p {
+            margin-bottom: 1.25rem;
+            font-size: 1.08rem;
+            color: var(--cor-texto);
+        }
+
+        .card-localizacao {
+            background-color: var(--cor-fundo);
+            border: 1px solid var(--cor-borda);
+            border-radius: 8px;
+            padding: 2.25rem;
+        }
+
+        .card-localizacao h3 {
+            font-family: var(--fonte-titulo);
+            color: var(--cor-primaria);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .lista-info {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .lista-info li {
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        /* =========================================
+           RODAPÉ (FOOTER)
+           ========================================= */
+        footer {
+            background-color: var(--cor-primaria);
+            color: #E2E8F0;
+            padding: 3.5rem 0 1.5rem 0;
+        }
+
+        .grid-footer {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-titulo {
+            font-family: var(--fonte-titulo);
+            color: var(--cor-destaque-claro);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #E2E8F0;
+            text-decoration: none;
+            transition: var(--transicao);
+        }
+
+        .footer-links a:hover {
+            color: var(--cor-destaque-claro);
+            text-decoration: underline;
+        }
+
+        .footer-base {
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #CBD5E1;
+        }
+
+        /* =========================================
+           RESPONSIVIDADE (NOTEBOOKS MENORES E CELULARES)
+           ========================================= */
+        @media (max-width: 1120px) {
+            .menu-toggle {
+                display: inline-flex;
+            }
+
+            .nav-principal {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--cor-branco);
+                border-bottom: 2px solid var(--cor-primaria);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-principal.ativo {
+                display: block;
+            }
+
+            .nav-principal ul {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.5rem;
+            }
+
+            .nav-principal a {
+                padding: 0.85rem 1rem;
+                border-bottom: 1px solid var(--cor-borda);
+                font-size: 1.05rem;
+            }
+
+            .nav-principal a.btn-contato-nav {
+                margin-left: 0;
+                margin-top: 0.5rem;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grid-institucional {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero {
+                padding: 3rem 0;
+                min-height: auto;
+            }
+
+            .frase-institucional {
+                padding: 1rem 1.15rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Link de Acessibilidade para leitores de tela e teclado -->
+    <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
+
+    <!-- =========================================
+         CABEÇALHO E MENU HORIZONTAL
+         ========================================= -->
+    <header>
+        <div class="container header-container">
+            <!-- Logo PFB em SVG Vetorial -->
+            <a href="index.html" class="logo-link" aria-label="PFB Advocacia - Página Inicial">
+                <svg width="48" height="48" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect x="2" y="2" width="60" height="60" rx="8" fill="#13293D" stroke="#B8860B" stroke-width="2.5"/>
+                    <path d="M16 18H48M32 18V46M20 46H44" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+                    <text x="32" y="38" text-anchor="middle" fill="#FFFFFF" font-family="Georgia, serif" font-weight="bold" font-size="16" letter-spacing="1.5">PFB</text>
+                </svg>
+                <div class="logo-texto">
+                    <span class="logo-sigla">PFB</span>
+                    <span class="logo-subtitulo">Advocacia &amp; Consultoria</span>
+                </div>
+            </a>
+
+            <!-- Botão Responsivo para Celulares -->
+            <button type="button" class="menu-toggle" id="btn-menu" aria-expanded="false" aria-controls="menu-navegacao" aria-label="Abrir menu de navegação">
+                <span aria-hidden="true">☰</span> Menu
+            </button>
+
+            <!-- Menu Horizontal (links preparados para abrir outras páginas web) -->
+            <nav class="nav-principal" id="menu-navegacao" aria-label="Navegação Principal">
+                <ul>
+                    <li><a href="index.html" aria-current="page">Início</a></li>
+                    <li><a href="direito-civil.html">Direito Civil</a></li>
+                    <li><a href="area-tributaria.html">Área Tributária</a></li>
+                    <li><a href="direito-consumidor.html">Direito do Consumidor</a></li>
+                    <li><a href="area-saude.html">Área da Saúde</a></li>
+                    <li><a href="seguro-e-contratos.html">Seguro e Contratos</a></li>
+                    <li><a href="localizacao.html">Localização</a></li>
+                    <li><a href="contato.html" class="btn-contato-nav">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- =========================================
+         CONTEÚDO PRINCIPAL
+         ========================================= -->
+    <main id="conteudo-principal">
+
+        <!-- Seção Hero com vista noturna de Piracicaba - SP -->
+        <section class="hero" aria-label="Apresentação do Escritório">
+            <div class="container">
+                <div class="hero-conteudo">
+                    <span class="hero-local">Piracicaba • São Paulo</span>
+                    <h1>Excelência jurídica pautada pela ética, proximidade e segurança.</h1>
+                    
+                    <p class="frase-institucional">
+                        “Atuamos de forma consultiva e contenciosa, oferecendo assessoria jurídica estratégica a pessoas físicas e empresas, com especial atenção à prevenção e solução de conflitos, à defesa de direitos e à segurança nas relações jurídicas.”
+                    </p>
+
+                    <div class="hero-acoes">
+                        <a href="contato.html" class="btn-primario">Agendar Atendimento</a>
+                        <a href="#areas-atuacao" class="btn-secundario">Conhecer Áreas de Atuação</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Áreas de Atuação (Cards com navegação para as páginas internas) -->
+        <section id="areas-atuacao" class="secao" aria-labelledby="titulo-areas">
+            <div class="container">
+                <div class="secao-cabecalho">
+                    <h2 id="titulo-areas">Áreas de Atuação</h2>
+                    <div class="divisor-dourado" aria-hidden="true"></div>
+                    <p>Atendimento técnico e humanizado em ramos essenciais do Direito para proteger seu patrimônio, sua saúde e suas relações.</p>
+                </div>
+
+                <div class="grid-areas">
+                    <!-- 1. Direito Civil -->
+                    <article class="card-area">
+                        <div>
+                            <h3>Direito Civil</h3>
+                            <p>Assessoria completa nas relações cotidianas, responsabilidade civil, obrigações, família, sucessões e proteção patrimonial.</p>
+                        </div>
+                        <a href="direito-civil.html" class="link-saiba-mais" aria-label="Saiba mais sobre Direito Civil">
+                            Explorar área <span aria-hidden="true">→</span>
+                        </a>
+                    </article>
+
+                    <!-- 2. Área Tributária -->
+                    <article class="card-area">
+                        <div>
+                            <h3>Área Tributária</h3>
+                            <p>Planejamento tributário preventivo, revisão fiscal e defesa administrativa ou judicial para pessoas físicas e empresas.</p>
+                        </div>
+                        <a href="area-tributaria.html" class="link-saiba-mais" aria-label="Saiba mais sobre Área Tributária">
+                            Explorar área <span aria-hidden="true">→</span>
+                        </a>
+                    </article>
+
+                    <!-- 3. Direito do Consumidor -->
+                    <article class="card-area">
+                        <div>
+                            <h3>Direito do Consumidor</h3>
+                            <p>Defesa equilibrada nas relações de consumo, combate a práticas abusivas, falhas na prestação de serviços e orientação empresarial.</p>
+                        </div>
+                        <a href="direito-consumidor.html" class="link-saiba-mais" aria-label="Saiba mais sobre Direito do Consumidor">
+                            Explorar área <span aria-hidden="true">→</span>
+                        </a>
+                    </article>
+
+                    <!-- 4. Área da Saúde -->
+                    <article class="card-area">
+                        <div>
+                            <h3>Área da Saúde</h3>
+                            <p>Atuação dedicada à garantia de acesso a tratamentos, medicamentos, cirurgias, cobertura de planos de saúde e direito médico.</p>
+                        </div>
+                        <a href="area-saude.html" class="link-saiba-mais" aria-label="Saiba mais sobre Área da Saúde">
+                            Explorar área <span aria-hidden="true">→</span>
+                        </a>
+                    </article>
+
+                    <!-- 5. Seguro e Contratos -->
+                    <article class="card-area">
+                        <div>
+                            <h3>Seguro e Contratos</h3>
+                            <p>Elaboração, revisão e análise de riscos contratuais, além de atuação especializada em negativas e regulação de sinistros securitários.</p>
+                        </div>
+                        <a href="seguro-e-contratos.html" class="link-saiba-mais" aria-label="Saiba mais sobre Seguro e Contratos">
+                            Explorar área <span aria-hidden="true">→</span>
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Acolhimento e Localização em Piracicaba -->
+        <section class="secao secao-institucional" aria-labelledby="titulo-compromisso">
+            <div class="container">
+                <div class="grid-institucional">
+                    <div class="bloco-texto">
+                        <h2 id="titulo-compromisso">Compromisso com a Escuta e a Clareza</h2>
+                        <p>
+                            Acreditamos que o exercício da advocacia exige rigor técnico aliado ao acolhimento humano. Cada demanda é analisada de forma individualizada, traduzindo a linguagem jurídica para que o cliente compreenda cada etapa com tranquilidade.
+                        </p>
+                        <p>
+                            Com sede em <strong>Piracicaba/SP</strong>, atendemos presencialmente e de forma digital em todo o estado, mantendo absoluto sigilo profissional e respeito às normas éticas da Ordem dos Advogados do Brasil (OAB).
+                        </p>
+                    </div>
+
+                    <aside class="card-localizacao" aria-label="Informações de Localização e Contato">
+                        <h3>Nosso Escritório em Piracicaba</h3>
+                        <ul class="lista-info">
+                            <li><strong>Cidade:</strong> Piracicaba – São Paulo</li>
+                            <li><strong>Atendimento:</strong> Segunda a Sexta, das 08h30 às 18h00</li>
+                            <li><strong>Modalidades:</strong> Presencial e Consultoria Online</li>
+                        </ul>
+                        <div class="hero-acoes">
+                            <a href="localizacao.html" class="btn-secundario" style="color: var(--cor-primaria); border-color: var(--cor-primaria);">Ver Mapa e Endereço</a>
+                            <a href="contato.html" class="btn-primario">Falar com a Equipe</a>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =========================================
+         RODAPÉ
+         ========================================= -->
+    <footer>
+        <div class="container">
+            <div class="grid-footer">
+                <div>
+                    <h2 class="footer-titulo">PFB Advocacia</h2>
+                    <p>Assessoria jurídica ética, estratégica e acolhedora em Piracicaba/SP.</p>
+                </div>
+
+                <div>
+                    <h2 class="footer-titulo">Áreas de Atuação</h2>
+                    <ul class="footer-links">
+                        <li><a href="direito-civil.html">Direito Civil</a></li>
+                        <li><a href="area-tributaria.html">Área Tributária</a></li>
+                        <li><a href="direito-consumidor.html">Direito do Consumidor</a></li>
+                        <li><a href="area-saude.html">Área da Saúde</a></li>
+                        <li><a href="seguro-e-contratos.html">Seguro e Contratos</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2 class="footer-titulo">Institucional</h2>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Página Inicial</a></li>
+                        <li><a href="localizacao.html">Localização</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-base">
+                <p>&copy; 2026 PFB Advocacia — Piracicaba/SP. Todos os direitos reservados. Conteúdo meramente informativo, em conformidade com o Código de Ética e Disciplina da OAB.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script para controle acessível do Menu Mobile -->
+    <script>
+        const btnMenu = document.getElementById('btn-menu');
+        const menuNavegacao = document.getElementById('menu-navegacao');
+
+        btnMenu.addEventListener('click', () => {
+            const estaAberto = menuNavegacao.classList.toggle('ativo');
+            btnMenu.setAttribute('aria-expanded', estaAberto);
+            btnMenu.setAttribute('aria-label', estaAberto ? 'Fechar menu de navegação' : 'Abrir menu de navegação');
+        });
+    </script>
+</body>
+</html>
